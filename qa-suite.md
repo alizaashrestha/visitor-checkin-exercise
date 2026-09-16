@@ -164,9 +164,7 @@ Status: [fail]
 
 
 
-# Regression Subset — Minor Registration Form Update
 
-**Scenario:** A new "Email Address" field is added in the registration form to so that all the visitors can be uniquely identified and there will be no case of duplicate registration.
 
 # Regression Subset — Minor Registration Form Update
 

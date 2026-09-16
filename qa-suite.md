@@ -149,6 +149,14 @@ Status: [fail]
 **Expected Result:** The "Previous" button on the page is not clickable.
 **Status:** [pass]
 
+### TC-016: Verify registration is blocked when the Full Name field contains only a single character
+**Preconditions:** Registration form is open.
+**Steps:**
+1. Confirm a single character (e.g., "A") is entered in the Full Name field.
+2. Confirm the remaining fields are filled with valid data.
+3. Confirm "Submit" is clicked.
+**Expected Result:** Submission should be blocked, since a single character does not constitute a valid full name.
+**Status:** [fail]
 
 
 

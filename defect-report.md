@@ -146,7 +146,7 @@
 ![Actual check-in time shown](evidence/UTC.png)
 
 
-### Defect 10: Visitors can be registered with a single-character name
+### Defect 9: Visitors can be registered with a single-character name
 - **Summary:** A visitor can be registered using just a single character as their full name.
 - **Type:** Functional
 - **Description:** The Full Name field has no minimum length validation. A visitor was successfully registered using only the single character "A" as their full name.
@@ -161,7 +161,7 @@
 - **Evidence:** ![alt text](evidence/singlecharacter.png)
 
 
-### Defect 11: Visitor creation via API does not save submitted data as all fields stored as null
+### Defect 10: Visitor creation via API does not save submitted data as all fields stored as null
 - **Summary:** Creating a visitor through the help of API results in a record with all submitted fields (full_name, company_name, purpose, host_id) saved as null, despite valid data being sent and a success response returned.
 - **Type:** Data
 - **Description:** When sending a POST request to the endpoint "/api/visitors" with a complete, correctly formatted payload including full_name, company_name, purpose, and host_id, the API responds with the status code "201 Created" indicating success but the resulting active visitor record has all of these fields set to null. Only the auto-generated id, checked_in_at timestamp, and default active status are created. This indicates the submitted data is not being persisted at all, despite the API reporting success.
@@ -177,7 +177,7 @@
 
 
 
-### Defect 12: Deactivated visitors via API endpoint still appear in the Active Visitors list
+### Defect 11: Deactivated visitors via API endpoint still appear in the Active Visitors list
 - **Summary:** A visitor marked as deactivated (active: false) still appears in the Active Visitors list.
 - **Type:** Functional
 - **Description:** The deactivated visitors must not appear in the active visitors list. However, after deactivating a visitor using the deactivation endpoint , the visitor continues to be displayed in the Active Visitors list. .
@@ -196,11 +196,8 @@
 ![Appeared on the "Active Visitor List even after the deactivation](evidence/appears.png)
 
 
-Assumptions/Open Questions?
+# Assumptions/Open Questions?
 
-Concern A: Can the same visitor register multiple times? (duplicate detection)
-
-This is about one real person registering twice.
 
 1. The feature does not specify how the application should distinguish between two different individuals who share the same full name, company, and visit purpose (e.g., two employees from the same company named "Aliza Shrestha," both visiting for a "meeting" on the same day). A visitor with identical details can be registered multiple times, with no way to confirm whether this represents the same person or two different people visiting at the same time. Since no unique identifier (such as an ID number or email) is captured during registration, there is no way to reliably tell these visitors apart in the system. Should the application capture an additional identifying field, or is name-based identification considered sufficient for this use case?
 
